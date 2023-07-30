@@ -35,6 +35,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -118,7 +119,7 @@ func main() {
 		os.Exit(0)
 	}
 	if name == "" {
-		fmt.Fprintln(os.Stderr, "\nstruct2json error: name of struct must be provided using the -n or -name flag.\nUse the '-h', '-help', or 'help' flag for more information about json2go flags.")
+		log.Println("\nstruct2json error: name of struct must be provided using the -n or -name flag.\nUse the '-h', '-help', or 'help' flag for more information about json2go flags.")
 		os.Exit(1)
 	}
 	var in, out, jsn *os.File
@@ -128,7 +129,7 @@ func main() {
 	if input != "stdin" {
 		in, err = os.Open(input)
 		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
+			log.Println(err)
 			os.Exit(1)
 		}
 	}
@@ -139,7 +140,7 @@ func main() {
 		//
 		out, err = os.OpenFile(output, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0644)
 		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
+			log.Println(err)
 			os.Exit(1)
 		}
 		defer out.Close()
@@ -148,7 +149,7 @@ func main() {
 			// get the rooted path to the output
 			output, err := filepath.Abs(output)
 			if err != nil {
-				fmt.Fprintln(os.Stderr, err)
+				log.Println(err)
 				os.Exit(1)
 			}
 			base := filepath.Base(filepath.Dir(output))
@@ -160,7 +161,7 @@ func main() {
 		if writeJSON {
 			jsn, err = os.OpenFile(fmt.Sprintf("%s.json", strings.TrimSuffix(output, filepath.Ext(output))), os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0644)
 			if err != nil {
-				fmt.Fprintln(os.Stderr, err)
+				log.Println(err)
 				os.Exit(1)
 			}
 			defer jsn.Close()
@@ -171,7 +172,7 @@ func main() {
 	if len(pkg) == 0 {
 		dir, err := os.Getwd()
 		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
+			log.Println(err)
 			os.Exit(1)
 		}
 		// get the parent dir name
@@ -196,7 +197,7 @@ func main() {
 	// Generate the Go Types
 	err = t.Gen()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		log.Println(err)
 		os.Exit(1)
 	}
 }
