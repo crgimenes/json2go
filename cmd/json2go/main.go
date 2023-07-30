@@ -1,8 +1,9 @@
 // json2go generates Go type definitions from JSON encoded objects as
 // defined in RFC 4627.  The type can be one of the following:
-//    map[string]T
-//    map[string][]T
-//    Type
+//
+//	map[string]T
+//	map[string][]T
+//	Type
 //
 // The result is Go source for the provided package name, with the type
 // definiton(s) for the JSON.  If no package name is provided, the name
@@ -38,7 +39,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/mohae/json2go"
+	"crg.eti.br/go/json2go"
 )
 
 // handle flags that are string arrays
@@ -80,7 +81,7 @@ var (
 	tagKeys    stringArr
 )
 
-func init() {
+func main() {
 	flag.StringVar(&name, "name", "", "the name of the type")
 	flag.StringVar(&name, "n", "", "the short flag for -name")
 	flag.StringVar(&input, "input", "stdin", "the path to the input file; if not specified stdin is used")
@@ -101,13 +102,7 @@ func init() {
 	flag.BoolVar(&help, "h", false, "the short flag for -help")
 	flag.Var(&tagKeys, "tagkeys", "additional struct tag keys; can be used more than once")
 	flag.Var(&tagKeys, "t", "the short flag for -tagkeys")
-}
 
-func main() {
-	os.Exit(realMain())
-}
-
-func realMain() int {
 	flag.Parse()
 	args := flag.Args()
 	// the only arg we care about is help.  This is in case the user uses
@@ -120,11 +115,11 @@ func realMain() int {
 	}
 	if help {
 		Help()
-		return 0
+		os.Exit(0)
 	}
 	if name == "" {
 		fmt.Fprintln(os.Stderr, "\nstruct2json error: name of struct must be provided using the -n or -name flag.\nUse the '-h', '-help', or 'help' flag for more information about json2go flags.")
-		return 1
+		os.Exit(1)
 	}
 	var in, out, jsn *os.File
 	var err error
@@ -134,7 +129,7 @@ func realMain() int {
 		in, err = os.Open(input)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
-			return 1
+			os.Exit(1)
 		}
 	}
 	defer in.Close()
@@ -145,7 +140,7 @@ func realMain() int {
 		out, err = os.OpenFile(output, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0644)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
-			return 1
+			os.Exit(1)
 		}
 		defer out.Close()
 		// set the package name, if one isn't set
@@ -154,7 +149,7 @@ func realMain() int {
 			output, err := filepath.Abs(output)
 			if err != nil {
 				fmt.Fprintln(os.Stderr, err)
-				return 1
+				os.Exit(1)
 			}
 			base := filepath.Base(filepath.Dir(output))
 			if base != string(os.PathSeparator) && base != "." {
@@ -166,7 +161,7 @@ func realMain() int {
 			jsn, err = os.OpenFile(fmt.Sprintf("%s.json", strings.TrimSuffix(output, filepath.Ext(output))), os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0644)
 			if err != nil {
 				fmt.Fprintln(os.Stderr, err)
-				return 1
+				os.Exit(1)
 			}
 			defer jsn.Close()
 		}
@@ -177,7 +172,7 @@ func realMain() int {
 		dir, err := os.Getwd()
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
-			return 1
+			os.Exit(1)
 		}
 		// get the parent dir name
 		base := filepath.Base(dir)
@@ -202,9 +197,8 @@ func realMain() int {
 	err = t.Gen()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
-	return 0
 }
 
 func Help() {
@@ -230,7 +224,7 @@ Errors are written to stderr.
 
 Minimal examples:
 
-    $ curl http://example.com/source.json | json2strct -n example
+    $ curl http://example.com/source.json | json2go -n example
 
 or
 
