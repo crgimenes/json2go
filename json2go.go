@@ -13,6 +13,9 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
+
 	"github.com/mohae/firkin/queue"
 )
 
@@ -82,12 +85,14 @@ func NewTransmogrifier(name string, r io.Reader, w io.Writer) *Transmogrifier {
 // portion of JSON that is of type map[string]interface{}.  This is used
 // when MapType is set to true.  If MapType is set to true but typeName is
 // not set, Struct will be used as the type name.
-func (t *Transmogrifier) SetStructName(s string) {
+func (t *Transmogrifier) SetStructName(structName string) {
 	// if empty, do nothing
-	if len(s) == 0 {
+	if len(structName) == 0 {
 		return
 	}
-	t.structName = strings.Title(s)
+
+	titleCase := cases.Title(language.English)
+	t.structName = titleCase.String(structName)
 }
 
 // SetPkg set's the package name to s.  The package name will be lowercased.
