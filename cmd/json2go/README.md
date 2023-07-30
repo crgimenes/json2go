@@ -283,7 +283,7 @@ This example results in a map[string]T.  The working directory is `hockey`.  Thi
 }
 ```
 
-#### Generated hockey.go  
+#### Generated hockey.go
 
 ```
 package hockey
