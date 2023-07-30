@@ -6,7 +6,8 @@
 //	Type
 //
 // The result is Go source for the provided package name, with the type
-// definiton(s) for the JSON.  If no package name is provided, the name
+// definition(s) for the JSON.  If no package name is provided, the name
+
 // will either be the name of the output directory, if the output is a
 // file, or the working directory.
 //
@@ -17,7 +18,7 @@
 // used.
 //
 // If a type contains other JSON objects, separate structs are defined
-// and the struct is embedded in the defintion.
+// and the struct is embedded in the definition.
 //
 // If an output destination is specified, the generated Go source will be
 // written to the specified destination, otherwise it will be written to
@@ -49,18 +50,22 @@ type stringArr []string
 // needed to fulfill flag.Value
 func (s *stringArr) String() string {
 	var tmp string
+
 	for i, v := range *s {
-		tmp += v
-		if i > 0 && i < len(*s) {
+		if i > 0 {
 			tmp += " "
 		}
+
+		tmp += v
 	}
+
 	return tmp
 }
 
 // Add the flag value to the slice.
 func (s *stringArr) Set(v string) error {
 	*s = append(*s, v)
+
 	return nil
 }
 
@@ -69,20 +74,20 @@ func (s stringArr) Get() []string {
 	return s
 }
 
-var (
-	name       string
-	pkg        string
-	input      string
-	output     string
-	structName string
-	writeJSON  bool
-	importJSON bool
-	mapType    bool
-	help       bool
-	tagKeys    stringArr
-)
-
 func main() {
+	var (
+		name       string
+		pkg        string
+		input      string
+		output     string
+		structName string
+		writeJSON  bool
+		importJSON bool
+		mapType    bool
+		help       bool
+		tagKeys    stringArr
+	)
+
 	flag.StringVar(&name, "name", "", "the name of the type")
 	flag.StringVar(&name, "n", "", "the short flag for -name")
 	flag.StringVar(&input, "input", "stdin", "the path to the input file; if not specified stdin is used")
@@ -114,18 +119,23 @@ func main() {
 			break
 		}
 	}
+
 	if help {
 		Help()
 		os.Exit(0)
 	}
+
 	if name == "" {
 		log.Println("\nstruct2json error: name of struct must be provided using the -n or -name flag.\nUse the '-h', '-help', or 'help' flag for more information about json2go flags.")
 		os.Exit(1)
 	}
+
 	var in, out, jsn *os.File
 	var err error
+
 	// set input
 	in = os.Stdin
+
 	if input != "stdin" {
 		in, err = os.Open(input)
 		if err != nil {
