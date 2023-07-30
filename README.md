@@ -137,6 +137,7 @@ type Window struct {
  Title  string `json:"title"`
  Width  int    `json:"width"`
 }
+```
 
 ## About this fork
 
