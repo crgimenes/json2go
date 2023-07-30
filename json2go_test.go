@@ -430,7 +430,7 @@ func TestCleanFieldName(t *testing.T) {
 	}
 }
 
-// this is to validate https://github.com/mohae/json2go/pull/3
+// this is to validate https://crg.eti.br/go/json2go/pull/3
 func TestEmptySlice(t *testing.T) {
 	test := `{
     "vals": [
@@ -444,10 +444,10 @@ func TestEmptySlice(t *testing.T) {
 	var buff bytes.Buffer
 	calvin := NewTransmogrifier("test", r, &buff)
 	err := calvin.Gen()
-	if err !=  nil {
+	if err != nil {
 		t.Errorf("unexpected error: %s", err)
 	}
-	if buff.String () != expected {
+	if buff.String() != expected {
 		t.Errorf("got %q want %q", buff.String(), expected)
 	}
 }

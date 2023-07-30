@@ -25,11 +25,11 @@ Struct tags with the key `json` are generated for all fields.  Additional struct
 
     json2go -o example.go -t xml -t db
 
-##  Installation
+## Installation
 
 Compile:
 
-    go install github.com/mohae/json2go/cmd/json2go
+    go install crg.eti.br/go/json2go/cmd/json2go
 
 The compiled application will be placed in your `$GOPATH/bin/`.
 
@@ -66,99 +66,99 @@ This example gets the JSON from a remote source and pipes it into `json2go`; gen
 package example
 
 import (
-	"encoding/json"
+ "encoding/json"
 )
 
 type Repo struct {
-	ArchiveURL       string      `json:"archive_url"`
-	AssigneesURL     string      `json:"assignees_url"`
-	BlobsURL         string      `json:"blobs_url"`
-	BranchesURL      string      `json:"branches_url"`
-	CloneURL         string      `json:"clone_url"`
-	CollaboratorsURL string      `json:"collaborators_url"`
-	CommentsURL      string      `json:"comments_url"`
-	CommitsURL       string      `json:"commits_url"`
-	CompareURL       string      `json:"compare_url"`
-	ContentsURL      string      `json:"contents_url"`
-	ContributorsURL  string      `json:"contributors_url"`
-	CreatedAt        string      `json:"created_at"`
-	DefaultBranch    string      `json:"default_branch"`
-	Description      string      `json:"description"`
-	DownloadsURL     string      `json:"downloads_url"`
-	EventsURL        string      `json:"events_url"`
-	Fork             bool        `json:"fork"`
-	Forks            int         `json:"forks"`
-	ForksCount       int         `json:"forks_count"`
-	ForksURL         string      `json:"forks_url"`
-	FullName         string      `json:"full_name"`
-	GitCommitsURL    string      `json:"git_commits_url"`
-	GitRefsURL       string      `json:"git_refs_url"`
-	GitTagsURL       string      `json:"git_tags_url"`
-	GitURL           string      `json:"git_url"`
-	HasDownloads     bool        `json:"has_downloads"`
-	HasIssues        bool        `json:"has_issues"`
-	HasPages         bool        `json:"has_pages"`
-	HasWiki          bool        `json:"has_wiki"`
-	Homepage         string      `json:"homepage"`
-	HooksURL         string      `json:"hooks_url"`
-	HTMLURL          string      `json:"html_url"`
-	ID               int         `json:"id"`
-	IssueCommentURL  string      `json:"issue_comment_url"`
-	IssueEventsURL   string      `json:"issue_events_url"`
-	IssuesURL        string      `json:"issues_url"`
-	KeysURL          string      `json:"keys_url"`
-	LabelsURL        string      `json:"labels_url"`
-	Language         string      `json:"language"`
-	LanguagesURL     string      `json:"languages_url"`
-	MergesURL        string      `json:"merges_url"`
-	MilestonesURL    string      `json:"milestones_url"`
-	MirrorURL        interface{} `json:"mirror_url"`
-	Name             string      `json:"name"`
-	NetworkCount     int         `json:"network_count"`
-	NotificationsURL string      `json:"notifications_url"`
-	OpenIssues       int         `json:"open_issues"`
-	OpenIssuesCount  int         `json:"open_issues_count"`
-	Owner            `json:"owner"`
-	Private          bool   `json:"private"`
-	PullsURL         string `json:"pulls_url"`
-	PushedAt         string `json:"pushed_at"`
-	ReleasesURL      string `json:"releases_url"`
-	Size             int    `json:"size"`
-	SSHURL           string `json:"ssh_url"`
-	StargazersCount  int    `json:"stargazers_count"`
-	StargazersURL    string `json:"stargazers_url"`
-	StatusesURL      string `json:"statuses_url"`
-	SubscribersCount int    `json:"subscribers_count"`
-	SubscribersURL   string `json:"subscribers_url"`
-	SubscriptionURL  string `json:"subscription_url"`
-	SvnURL           string `json:"svn_url"`
-	TagsURL          string `json:"tags_url"`
-	TeamsURL         string `json:"teams_url"`
-	TreesURL         string `json:"trees_url"`
-	UpdatedAt        string `json:"updated_at"`
-	URL              string `json:"url"`
-	Watchers         int    `json:"watchers"`
-	WatchersCount    int    `json:"watchers_count"`
+ ArchiveURL       string      `json:"archive_url"`
+ AssigneesURL     string      `json:"assignees_url"`
+ BlobsURL         string      `json:"blobs_url"`
+ BranchesURL      string      `json:"branches_url"`
+ CloneURL         string      `json:"clone_url"`
+ CollaboratorsURL string      `json:"collaborators_url"`
+ CommentsURL      string      `json:"comments_url"`
+ CommitsURL       string      `json:"commits_url"`
+ CompareURL       string      `json:"compare_url"`
+ ContentsURL      string      `json:"contents_url"`
+ ContributorsURL  string      `json:"contributors_url"`
+ CreatedAt        string      `json:"created_at"`
+ DefaultBranch    string      `json:"default_branch"`
+ Description      string      `json:"description"`
+ DownloadsURL     string      `json:"downloads_url"`
+ EventsURL        string      `json:"events_url"`
+ Fork             bool        `json:"fork"`
+ Forks            int         `json:"forks"`
+ ForksCount       int         `json:"forks_count"`
+ ForksURL         string      `json:"forks_url"`
+ FullName         string      `json:"full_name"`
+ GitCommitsURL    string      `json:"git_commits_url"`
+ GitRefsURL       string      `json:"git_refs_url"`
+ GitTagsURL       string      `json:"git_tags_url"`
+ GitURL           string      `json:"git_url"`
+ HasDownloads     bool        `json:"has_downloads"`
+ HasIssues        bool        `json:"has_issues"`
+ HasPages         bool        `json:"has_pages"`
+ HasWiki          bool        `json:"has_wiki"`
+ Homepage         string      `json:"homepage"`
+ HooksURL         string      `json:"hooks_url"`
+ HTMLURL          string      `json:"html_url"`
+ ID               int         `json:"id"`
+ IssueCommentURL  string      `json:"issue_comment_url"`
+ IssueEventsURL   string      `json:"issue_events_url"`
+ IssuesURL        string      `json:"issues_url"`
+ KeysURL          string      `json:"keys_url"`
+ LabelsURL        string      `json:"labels_url"`
+ Language         string      `json:"language"`
+ LanguagesURL     string      `json:"languages_url"`
+ MergesURL        string      `json:"merges_url"`
+ MilestonesURL    string      `json:"milestones_url"`
+ MirrorURL        interface{} `json:"mirror_url"`
+ Name             string      `json:"name"`
+ NetworkCount     int         `json:"network_count"`
+ NotificationsURL string      `json:"notifications_url"`
+ OpenIssues       int         `json:"open_issues"`
+ OpenIssuesCount  int         `json:"open_issues_count"`
+ Owner            `json:"owner"`
+ Private          bool   `json:"private"`
+ PullsURL         string `json:"pulls_url"`
+ PushedAt         string `json:"pushed_at"`
+ ReleasesURL      string `json:"releases_url"`
+ Size             int    `json:"size"`
+ SSHURL           string `json:"ssh_url"`
+ StargazersCount  int    `json:"stargazers_count"`
+ StargazersURL    string `json:"stargazers_url"`
+ StatusesURL      string `json:"statuses_url"`
+ SubscribersCount int    `json:"subscribers_count"`
+ SubscribersURL   string `json:"subscribers_url"`
+ SubscriptionURL  string `json:"subscription_url"`
+ SvnURL           string `json:"svn_url"`
+ TagsURL          string `json:"tags_url"`
+ TeamsURL         string `json:"teams_url"`
+ TreesURL         string `json:"trees_url"`
+ UpdatedAt        string `json:"updated_at"`
+ URL              string `json:"url"`
+ Watchers         int    `json:"watchers"`
+ WatchersCount    int    `json:"watchers_count"`
 }
 
 type Owner struct {
-	AvatarURL         string `json:"avatar_url"`
-	EventsURL         string `json:"events_url"`
-	FollowersURL      string `json:"followers_url"`
-	FollowingURL      string `json:"following_url"`
-	GistsURL          string `json:"gists_url"`
-	GravatarID        string `json:"gravatar_id"`
-	HTMLURL           string `json:"html_url"`
-	ID                int    `json:"id"`
-	Login             string `json:"login"`
-	OrganizationsURL  string `json:"organizations_url"`
-	ReceivedEventsURL string `json:"received_events_url"`
-	ReposURL          string `json:"repos_url"`
-	SiteAdmin         bool   `json:"site_admin"`
-	StarredURL        string `json:"starred_url"`
-	SubscriptionsURL  string `json:"subscriptions_url"`
-	Type              string `json:"type"`
-	URL               string `json:"url"`
+ AvatarURL         string `json:"avatar_url"`
+ EventsURL         string `json:"events_url"`
+ FollowersURL      string `json:"followers_url"`
+ FollowingURL      string `json:"following_url"`
+ GistsURL          string `json:"gists_url"`
+ GravatarID        string `json:"gravatar_id"`
+ HTMLURL           string `json:"html_url"`
+ ID                int    `json:"id"`
+ Login             string `json:"login"`
+ OrganizationsURL  string `json:"organizations_url"`
+ ReceivedEventsURL string `json:"received_events_url"`
+ ReposURL          string `json:"repos_url"`
+ SiteAdmin         bool   `json:"site_admin"`
+ StarredURL        string `json:"starred_url"`
+ SubscriptionsURL  string `json:"subscriptions_url"`
+ Type              string `json:"type"`
+ URL               string `json:"url"`
 }
 ```
 
@@ -189,7 +189,7 @@ type Owner struct {
     "site_admin": false
   },
   "private": false,
-  "html_url": "https://github.com/mohae/json2go",
+  "html_url": "https://crg.eti.br/go/json2go",
   "description": "Generate Go struct definitions from JSON",
   "fork": false,
   "url": "https://api.github.com/repos/mohae/json2go",
@@ -231,10 +231,10 @@ type Owner struct {
   "created_at": "2015-11-30T06:31:18Z",
   "updated_at": "2015-12-09T21:19:26Z",
   "pushed_at": "2015-12-09T21:18:44Z",
-  "git_url": "git://github.com/mohae/json2go.git",
+  "git_url": "git://crg.eti.br/go/json2go.git",
   "ssh_url": "git@github.com:mohae/json2go.git",
-  "clone_url": "https://github.com/mohae/json2go.git",
-  "svn_url": "https://github.com/mohae/json2go",
+  "clone_url": "https://crg.eti.br/go/json2go.git",
+  "svn_url": "https://crg.eti.br/go/json2go",
   "homepage": "",
   "size": 1198,
   "stargazers_count": 0,
@@ -255,11 +255,12 @@ type Owner struct {
   "subscribers_count": 1
 }
 ```
-### Example 2:
+
+### Example 2
 
 This example results in a map[string]T.  The working directory is `hockey`.  This example also shows multiple tag keys.
 
-### Command:
+### Command
 
     json2go -m -i hockey.json -o hockey.go -n team -s player -t yaml -t db
 
@@ -291,145 +292,147 @@ type Team map[string][]Player
 
 type Player struct {
         Name     string `json:"name" yaml:"name" db:"name"`
-	Number   int    `json:"number" yaml:"number" db:"number"`
-	Position string `json:"position" yaml:"position" db:"position"`
+ Number   int    `json:"number" yaml:"number" db:"number"`
+ Position string `json:"position" yaml:"position" db:"position"`
 }
 ```
 
-## Example 3:
+## Example 3
 
 This example uses json of much greater complexity in a local file.  The working directory is 'weather'.
 
-### Command:
+### Command
 
     json2go -i weather.json -o weather.go -n weather
 
 #### Generated weather.go
+
 The generated Go source code for `weather.json`:
 
 ```
 package weather
 
 type Weather struct {
-	HourlyForecasts []HourlyForecast `json:"hourly_forecast"`
-	Response        `json:"response"`
+ HourlyForecasts []HourlyForecast `json:"hourly_forecast"`
+ Response        `json:"response"`
 }
 
 type HourlyForecast struct {
-	FCTTIME   `json:"FCTTIME"`
-	Condition string `json:"condition"`
-	Dewpoint  `json:"dewpoint"`
-	Fctcode   string `json:"fctcode"`
-	Feelslike `json:"feelslike"`
-	Heatindex `json:"heatindex"`
-	Humidity  string `json:"humidity"`
-	Icon      string `json:"icon"`
-	IconURL   string `json:"icon_url"`
-	Mslp      `json:"mslp"`
-	Pop       string `json:"pop"`
-	Qpf       `json:"qpf"`
-	Sky       string `json:"sky"`
-	Snow      `json:"snow"`
-	Temp      `json:"temp"`
-	Uvi       string `json:"uvi"`
-	Wdir      `json:"wdir"`
-	Windchill `json:"windchill"`
-	Wspd      `json:"wspd"`
-	Wx        string `json:"wx"`
+ FCTTIME   `json:"FCTTIME"`
+ Condition string `json:"condition"`
+ Dewpoint  `json:"dewpoint"`
+ Fctcode   string `json:"fctcode"`
+ Feelslike `json:"feelslike"`
+ Heatindex `json:"heatindex"`
+ Humidity  string `json:"humidity"`
+ Icon      string `json:"icon"`
+ IconURL   string `json:"icon_url"`
+ Mslp      `json:"mslp"`
+ Pop       string `json:"pop"`
+ Qpf       `json:"qpf"`
+ Sky       string `json:"sky"`
+ Snow      `json:"snow"`
+ Temp      `json:"temp"`
+ Uvi       string `json:"uvi"`
+ Wdir      `json:"wdir"`
+ Windchill `json:"windchill"`
+ Wspd      `json:"wspd"`
+ Wx        string `json:"wx"`
 }
 
 type Response struct {
-	Features       `json:"features"`
-	TermsofService string `json:"termsofService"`
-	Version        string `json:"version"`
+ Features       `json:"features"`
+ TermsofService string `json:"termsofService"`
+ Version        string `json:"version"`
 }
 
 type FCTTIME struct {
-	UTCDATE                string `json:"UTCDATE"`
-	Age                    string `json:"age"`
-	Ampm                   string `json:"ampm"`
-	Civil                  string `json:"civil"`
-	Epoch                  string `json:"epoch"`
-	Hour                   string `json:"hour"`
-	HourPadded             string `json:"hour_padded"`
-	Isdst                  string `json:"isdst"`
-	Mday                   string `json:"mday"`
-	MdayPadded             string `json:"mday_padded"`
-	Min                    string `json:"min"`
-	MinUnpadded            string `json:"min_unpadded"`
-	Mon                    string `json:"mon"`
-	MonAbbrev              string `json:"mon_abbrev"`
-	MonPadded              string `json:"mon_padded"`
-	MonthName              string `json:"month_name"`
-	MonthNameAbbrev        string `json:"month_name_abbrev"`
-	Pretty                 string `json:"pretty"`
-	Sec                    string `json:"sec"`
-	Tz                     string `json:"tz"`
-	WeekdayName            string `json:"weekday_name"`
-	WeekdayNameAbbrev      string `json:"weekday_name_abbrev"`
-	WeekdayNameNight       string `json:"weekday_name_night"`
-	WeekdayNameNightUnlang string `json:"weekday_name_night_unlang"`
-	WeekdayNameUnlang      string `json:"weekday_name_unlang"`
-	Yday                   string `json:"yday"`
-	Year                   string `json:"year"`
+ UTCDATE                string `json:"UTCDATE"`
+ Age                    string `json:"age"`
+ Ampm                   string `json:"ampm"`
+ Civil                  string `json:"civil"`
+ Epoch                  string `json:"epoch"`
+ Hour                   string `json:"hour"`
+ HourPadded             string `json:"hour_padded"`
+ Isdst                  string `json:"isdst"`
+ Mday                   string `json:"mday"`
+ MdayPadded             string `json:"mday_padded"`
+ Min                    string `json:"min"`
+ MinUnpadded            string `json:"min_unpadded"`
+ Mon                    string `json:"mon"`
+ MonAbbrev              string `json:"mon_abbrev"`
+ MonPadded              string `json:"mon_padded"`
+ MonthName              string `json:"month_name"`
+ MonthNameAbbrev        string `json:"month_name_abbrev"`
+ Pretty                 string `json:"pretty"`
+ Sec                    string `json:"sec"`
+ Tz                     string `json:"tz"`
+ WeekdayName            string `json:"weekday_name"`
+ WeekdayNameAbbrev      string `json:"weekday_name_abbrev"`
+ WeekdayNameNight       string `json:"weekday_name_night"`
+ WeekdayNameNightUnlang string `json:"weekday_name_night_unlang"`
+ WeekdayNameUnlang      string `json:"weekday_name_unlang"`
+ Yday                   string `json:"yday"`
+ Year                   string `json:"year"`
 }
 
 type Dewpoint struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Feelslike struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Heatindex struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Mslp struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Qpf struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Snow struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Temp struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Wdir struct {
-	Degrees string `json:"degrees"`
-	Dir     string `json:"dir"`
+ Degrees string `json:"degrees"`
+ Dir     string `json:"dir"`
 }
 
 type Windchill struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Wspd struct {
-	English string `json:"english"`
-	Metric  string `json:"metric"`
+ English string `json:"english"`
+ Metric  string `json:"metric"`
 }
 
 type Features struct {
-	Hourly int `json:"hourly"`
+ Hourly int `json:"hourly"`
 }
 ```
 
 #### Contents of weather.json
+
 The source JSON used to generate the Go struct definitions.
 
  ```
