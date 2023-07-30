@@ -1,6 +1,7 @@
 json2go
 =======
-[![GoDoc](https://godoc.org/github.com/mohae/json2go?status.svg)](https://godoc.org/github.com/mohae/json2go)[![Build Status](https://travis-ci.org/mohae/json2go.png)](https://travis-ci.org/mohae/json2go)
+
+[![GoDoc](https://godoc.org/crg.eti.br/go/json2go?status.svg)](https://godoc.org/crg.eti.br/go/json2go)
 
 Generate Go structs from JSON with struct tags: can specify type name, package name, and additional field tag keys with the CLI app.
 
@@ -22,9 +23,9 @@ Keys with underscores, `_`, are converted to MixedCase.  If any part of a key wi
 
 If a field's value is null, the field's type will be `interface{}`, as that field's type is not determinable.
 
-There is also a [json2go CLI app](https://github.com/mohae/json2go/tree/master/cmd/json2go).  See that [README](https://github.com/mohae/json2go/tree/master/cmd/json2go) for more info and examples; including how to install it.
+There is also a [json2go CLI app](https://crg.eti.br/go/json2go/tree/master/cmd/json2go).  See that [README](https://crg.eti.br/go/json2go/tree/master/cmd/json2go) for more info and examples; including how to install it.
 
-## Examples:
+## Examples
 
 __map[string][]T__
 
@@ -55,44 +56,44 @@ package main
 type Team map[string][]Player
 
 type Player struct {
-	Name     string `json:"name"`
-	Number   int    `json:"number"`
-	Position string `json:"position"`
+ Name     string `json:"name"`
+ Number   int    `json:"number"`
+ Position string `json:"position"`
 }
 ```
 
 __struct__
 
-Source JSON from http://json.org/example.html:
+Source JSON from <http://json.org/example.html>:
 
 ```
 {
-	"widget": {
-		"debug": "on",
-		"window": {
- 			"title": "Sample Konfabulator Widget",
-         		"name": "main_window",
-         		"width": 500,
-         		"height": 500
- 		},
- 		"image": {
-         		"src": "Images/Sun.png",
-         		"name": "sun1",
-         		"hOffset": 250,
-         		"vOffset": 250,
-         		"alignment": "center"
- 		},
- 		"text": {
- 			"data": "Click Here",
-         		"size": 36,
-         		"style": "bold",
-         		"name": "text1",
-         		"hOffset": 250,
-         		"vOffset": 100,
-         		"alignment": "center",
-         		"onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
- 		}
-	}
+ "widget": {
+  "debug": "on",
+  "window": {
+    "title": "Sample Konfabulator Widget",
+           "name": "main_window",
+           "width": 500,
+           "height": 500
+   },
+   "image": {
+           "src": "Images/Sun.png",
+           "name": "sun1",
+           "hOffset": 250,
+           "vOffset": 250,
+           "alignment": "center"
+   },
+   "text": {
+    "data": "Click Here",
+           "size": 36,
+           "style": "bold",
+           "name": "text1",
+           "hOffset": 250,
+           "vOffset": 100,
+           "alignment": "center",
+           "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
+   }
+ }
 }
 ```
 
@@ -102,37 +103,41 @@ Using _Thing_ as the parent type name results in:
 package main
 
 type Thing struct {
-	 Widget `json:"widget"
+  Widget `json:"widget"
 }
 type Widget struct {
-	Debug  string `json:"debug"`
-	Image  `json:"image"`
-	Text   `json:"text"`
-	Window `json:"window"`
+ Debug  string `json:"debug"`
+ Image  `json:"image"`
+ Text   `json:"text"`
+ Window `json:"window"`
 }
 
 type Image struct {
-	Alignment string `json:"alignment"`
-	HOffset   int    `json:"hOffset"`
-	Name      string `json:"name"`
-	Src       string `json:"src"`
-	VOffset   int    `json:"vOffset"`
+ Alignment string `json:"alignment"`
+ HOffset   int    `json:"hOffset"`
+ Name      string `json:"name"`
+ Src       string `json:"src"`
+ VOffset   int    `json:"vOffset"`
 }
 
 type Text struct {
-	Alignment string `json:"alignment"`
-	Data      string `json:"data"`
-	HOffset   int    `json:"hOffset"`
-	Name      string `json:"name"`
-	OnMouseUp string `json:"onMouseUp"`
-	Size      int    `json:"size"`
-	Style     string `json:"style"`
-	VOffset   int    `json:"vOffset"`
+ Alignment string `json:"alignment"`
+ Data      string `json:"data"`
+ HOffset   int    `json:"hOffset"`
+ Name      string `json:"name"`
+ OnMouseUp string `json:"onMouseUp"`
+ Size      int    `json:"size"`
+ Style     string `json:"style"`
+ VOffset   int    `json:"vOffset"`
 }
 
 type Window struct {
-	Height int    `json:"height"`
-	Name   string `json:"name"`
-	Title  string `json:"title"`
-	Width  int    `json:"width"`
+ Height int    `json:"height"`
+ Name   string `json:"name"`
+ Title  string `json:"title"`
+ Width  int    `json:"width"`
 }
+
+## About this fork
+
+This is a heavily modified fork of the original json2go tool by mohae. https://github.com/mohae/json2go
