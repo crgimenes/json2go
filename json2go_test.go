@@ -3,6 +3,7 @@ package json2go
 import (
 	"bytes"
 	"fmt"
+	"io"
 	"testing"
 )
 
@@ -449,5 +450,40 @@ func TestEmptySlice(t *testing.T) {
 	}
 	if buff.String() != expected {
 		t.Errorf("got %q want %q", buff.String(), expected)
+	}
+}
+
+func TestExtractJSON(t *testing.T) {
+	type args struct {
+		r io.Reader
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{"empty object", args{bytes.NewReader([]byte(`{}`))}, "{}", false},
+		{"empty array", args{bytes.NewReader([]byte(`[]`))}, "[]", false},
+		{"object with log prefix and string suffix",
+			args{bytes.NewReader([]byte(`2023-08-02T22:35:52-0300 test log: {"a": "b"} test`))},
+			`{"a": "b"}`, false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := ExtractJSON(tt.args.r)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("ExtractJSON() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			s, err := io.ReadAll(got)
+			if err != nil {
+				t.Errorf("ExtractJSON() error = %v", err)
+				return
+			}
+			if string(s) != tt.want {
+				t.Errorf("ExtractJSON() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }

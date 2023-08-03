@@ -520,3 +520,39 @@ func toUpperInitialism(s string) string {
 	}
 	return s
 }
+
+/*
+ExtractJSON Tries to remove noise before and after the JSON.
+For example, if the JSON comes from a log, it clears the date
+and other strings before and after the JSON.
+The JSON must be an object, or an array.
+*/
+func ExtractJSON(r io.Reader) (*bytes.Reader, error) {
+	b, err := io.ReadAll(r)
+	if err != nil {
+		return nil, err
+	}
+
+	var start, end int
+	for i, v := range b {
+		if v == '{' || v == '[' {
+			start = i
+
+			break
+		}
+	}
+
+	for i := len(b) - 1; i >= 0; i-- {
+		if b[i] == '}' || b[i] == ']' {
+			end = i
+
+			break
+		}
+	}
+
+	if start == 0 && end == 0 {
+		return nil, fmt.Errorf("JSON not found")
+	}
+
+	return bytes.NewReader(b[start : end+1]), nil
+}

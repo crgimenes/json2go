@@ -76,16 +76,17 @@ func (s stringArr) Get() []string {
 
 func main() {
 	var (
-		name       string
-		pkg        string
-		input      string
-		output     string
-		structName string
-		writeJSON  bool
-		importJSON bool
-		mapType    bool
-		help       bool
-		tagKeys    stringArr
+		name        string
+		pkg         string
+		input       string
+		output      string
+		structName  string
+		writeJSON   bool
+		importJSON  bool
+		mapType     bool
+		help        bool
+		extractJSON bool
+		tagKeys     stringArr
 	)
 
 	flag.StringVar(&name, "name", "", "the name of the type")
@@ -106,6 +107,8 @@ func main() {
 	flag.BoolVar(&mapType, "m", false, "the short flag for -maptype")
 	flag.BoolVar(&help, "help", false, "json2go help")
 	flag.BoolVar(&help, "h", false, "the short flag for -help")
+	flag.BoolVar(&extractJSON, "extract", false, "extract the JSON removing noise from the beginning")
+	flag.BoolVar(&extractJSON, "e", false, "the short of flag")
 	flag.Var(&tagKeys, "tagkeys", "additional struct tag keys; can be used more than once")
 	flag.Var(&tagKeys, "t", "the short flag for -tagkeys")
 
@@ -144,6 +147,7 @@ func main() {
 		}
 	}
 	defer in.Close()
+
 	// set output
 	out = os.Stdout
 	if output != "stdout" {
@@ -192,7 +196,19 @@ func main() {
 		}
 	}
 	// create the transmogrifier and configure it.
-	t := json2go.NewTransmogrifier(name, in, out)
+
+	var t *json2go.Transmogrifier
+	if extractJSON {
+		inAux, err := json2go.ExtractJSON(in)
+		if err != nil {
+			log.Println(err)
+			os.Exit(1)
+		}
+		t = json2go.NewTransmogrifier(name, inAux, out)
+	} else {
+		t = json2go.NewTransmogrifier(name, in, out)
+	}
+
 	if writeJSON {
 		t.WriteJSON = writeJSON
 		t.SetJSONWriter(jsn)
