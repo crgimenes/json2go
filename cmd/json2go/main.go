@@ -130,7 +130,7 @@ func main() {
 
 	if name == "" {
 		if input == "stdin" {
-			log.Println("\nstruct2json error: name of struct must be provided using the -n or -name flag.\nUse the '-h', '-help', or 'help' flag for more information about json2go flags.")
+			Help()
 			os.Exit(1)
 		}
 		name = strings.TrimSuffix(filepath.Base(input), filepath.Ext(input))
@@ -266,7 +266,7 @@ Options:
 flag              default   description
 ---------------   -------   ------------------------------------------
 -n  -name                   The name of the type (required if input
-							is stdin).
+                            is stdin).
 -i  -input        stdin     The JSON input source.
 -o  -output       stdout    The Go srouce code output destination.
 -w  -writejson    false     Write the source JSON to file; only valid
@@ -281,10 +281,10 @@ flag              default   description
 -t  -tagkey                 Additional key to be added to struct tags.
                             For multiple keys, use one per key value.
 -e  -extractjson  false     Extract the JSON from the input and use
-							that as the source.
+                            that as the source.
 
 This is a heavily modified fork of
-the original json2go tool by Joel Scoble (mohae).
+the original json2go by Joel Scoble (mohae).
 `
 	fmt.Println(helpText)
 }
