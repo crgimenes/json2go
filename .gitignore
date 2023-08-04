@@ -30,3 +30,5 @@ _testmain.go
 *.log
 
 json2go
+examples/generate/example
+
