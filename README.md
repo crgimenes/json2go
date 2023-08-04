@@ -23,7 +23,7 @@ Keys with underscores, `_`, are converted to MixedCase.  If any part of a key wi
 
 If a field's value is null, the field's type will be `interface{}`, as that field's type is not determinable.
 
-There is also a [json2go CLI app](https://crg.eti.br/go/json2go/tree/master/cmd/json2go).  See that [README](https://crg.eti.br/go/json2go/tree/master/cmd/json2go) for more info and examples; including how to install it.
+There is also a [json2go CLI app](https://github.com/crgimenes/json2go/tree/master/cmd/json2go).  See that [README](https://github.com/crgimenes/json2go/tree/master/cmd/json2go) for more info and examples; including how to install it.
 
 ## Examples
 
