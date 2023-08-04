@@ -129,8 +129,11 @@ func main() {
 	}
 
 	if name == "" {
-		log.Println("\nstruct2json error: name of struct must be provided using the -n or -name flag.\nUse the '-h', '-help', or 'help' flag for more information about json2go flags.")
-		os.Exit(1)
+		if input == "stdin" {
+			log.Println("\nstruct2json error: name of struct must be provided using the -n or -name flag.\nUse the '-h', '-help', or 'help' flag for more information about json2go flags.")
+			os.Exit(1)
+		}
+		name = strings.TrimSuffix(filepath.Base(input), filepath.Ext(input))
 	}
 
 	var in, out, jsn *os.File
@@ -236,8 +239,9 @@ Go type definitions will be generated from the input JSON.  The
 generated Go code will be part of package main, unless a different
 package is specified using either the -p or -pkg flags.
 
-The name for the struct must be specified using either the -n or
--name flags; name is required.
+If the struct name is not specified, json2go tries to use the input 
+file name; if the input is stdin, the name must be specified using 
+either the -n or -name flags;
 
 A JSON source file can be specified with either the -i or -input
 flags.  If none is specified, the JSON is expected to come from
@@ -261,7 +265,8 @@ Options:
 
 flag              default   description
 ---------------   -------   ------------------------------------------
--n  -name                   The name of the type: required.
+-n  -name                   The name of the type (required if input
+							is stdin).
 -i  -input        stdin     The JSON input source.
 -o  -output       stdout    The Go srouce code output destination.
 -w  -writejson    false     Write the source JSON to file; only valid
@@ -275,6 +280,11 @@ flag              default   description
 -h  -help         false     Print the help text; 'help' is also valid.
 -t  -tagkey                 Additional key to be added to struct tags.
                             For multiple keys, use one per key value.
+-e  -extractjson  false     Extract the JSON from the input and use
+							that as the source.
+
+This is a heavily modified fork of
+the original json2go tool by Joel Scoble (mohae).
 `
 	fmt.Println(helpText)
 }
