@@ -1,4 +1,4 @@
 github.com/mohae/firkin v0.0.0-20160628234414-44b753e65e9f h1:Hopn0Rd4BiAOBh5TJJPGT1nuoLli+mkwd+HM8aJ1cJw=
 github.com/mohae/firkin v0.0.0-20160628234414-44b753e65e9f/go.mod h1:plySA1kLrKvjFpcF2tXoY6VPG+g2w6RdeoHqoxu+smA=
-golang.org/x/text v0.12.0 h1:k+n5B8goJNdU7hSvEtMUz3d1Q6D/XW4COJSJR6fN0mc=
-golang.org/x/text v0.12.0/go.mod h1:TvPlkZtksWOMsz7fbANvkp4WM8x/WCo/om8BMLbz+aE=
+golang.org/x/text v0.14.0 h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ=
+golang.org/x/text v0.14.0/go.mod h1:18ZOQIKpY8NJVqYksKHtTdi31H5itFRjB5/qKTNYzSU=
